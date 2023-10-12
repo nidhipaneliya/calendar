@@ -6,8 +6,8 @@ import CalenderTable from './CalenderTable'
 
 const Calender = () => {
     const {
-        selectedDate, setSelectedDate,
-        timezone, setTimezone,
+        selectedDate,
+        timezone,
         timeSlots,
         handleDateChange,
         handleTimezoneChange,

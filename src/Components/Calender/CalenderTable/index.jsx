@@ -8,7 +8,8 @@ const CalenderTable = ({
   handleCheckboxChange,
   isCheckboxSelected,
 }) => {
-  const renderHeaders = () => {
+
+  const renderAllTimeSlots = () => {
     const headers = [];
 
     for (let i = 0; i < 7; i++) {
@@ -35,7 +36,7 @@ const CalenderTable = ({
 
   const renderTimeSlots = (date) => {
     return timeSlots.map((timeSlot, index) => (
-      <td key={timeSlot}>
+      <td key={index}>
         <td className="p-1">
           <input
             type="checkbox"
@@ -51,7 +52,7 @@ const CalenderTable = ({
   return (
     <>
       <Container>
-        <div className="mt-3">{renderHeaders()}</div>
+        <div className="mt-3">{renderAllTimeSlots()}</div>
       </Container>
     </>
   );
