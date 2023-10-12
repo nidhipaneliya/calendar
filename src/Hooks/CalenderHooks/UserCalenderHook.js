@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import moment from "moment-timezone";
 
 /**
- * This hook contain all functionality which is needs in whole Calender component
+ * This hook contain all functionality which is needs in Calender component
  * @returns
  */
 const useCalender = () => {
@@ -11,16 +11,16 @@ const useCalender = () => {
   const [selectedDate, setSelectedDate] = useState(moment().tz("UTC"));
 
   /**
-   * Generate all time slot which is display in table
-   * Memoize this function thats why not update at every render
+   * Generate all time slot which is display on screen
+   * Memoize this function to not update at every time rendering
    */
   const timeSlots = useMemo(() => {
     const timeSlots = [];
     const startTimeMorning = moment().startOf("day").tz(timezone).hour(8);
-    const startTimeEvening = moment().startOf("day").tz(timezone).hour(23); // 1:00 PM
+    const startTimeEvening = moment().startOf("day").tz(timezone).hour(23);
 
     while (startTimeMorning.isSameOrBefore(startTimeEvening)) {
-      timeSlots.push(startTimeMorning.format("hh:mm A")); // 'hh:mm A' for AM/PM format
+      timeSlots.push(startTimeMorning.format("hh:mm A"));
       startTimeMorning.add(30, "minutes");
     }
 
@@ -65,7 +65,7 @@ const useCalender = () => {
       (item) => item.checkboxId === checkboxId
     );
 
-    //select and de select checkbox based on checkbox itemDate
+    //select and unselect checkbox
     if (existingIndex !== -1) {
       updatedSelectedCheckboxes.splice(existingIndex, 1);
     } else {
@@ -84,7 +84,7 @@ const useCalender = () => {
       const itemDate = item.date;
       const itemTime = item.time;
 
-      // Compare json data's date and time with the given date and timeSlot
+      // Compare json data's date and time with the given date and time
       return itemDate == date.format("YYYY-MM-DD") && itemTime == timeSlot;
     });
 
